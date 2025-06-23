@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auto-École Neuburger – Permis Auto &amp; Moto à Bondy</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS + DaisyUI + Flowbite plugin -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#FBBF24', secondary: '#111827' },
+          fontFamily: {
+            sans: ['Poppins','sans-serif'],
+            serif: ['Playfair Display','serif']
+          }
+        }
+      },
+      plugins: [require('daisyui'), require('flowbite/plugin')],
+      daisyui: { themes: ['dark','light'] }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- External CSS Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.1/nouislider.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/splitting@1.1.0/dist/splitting.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.3.0/simplebar.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/microtip@0.2.2/dist/microtip.min.css" />
+
+  <!-- Three.js & Vanta.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+  <!-- Feather Icons, Lenis, Vanilla-Tilt, Typed.js, CountUp.js -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.23/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.0.7/countUp.min.js"></script>
+
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="services.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+  <!-- Vroom Vroom Reviews CSS -->
+<link rel="stylesheet" href="vroomReviews.css" />
+
+</head>
+<body class="font-sans bg-secondary text-white overflow-x-hidden relative">
+  <!-- Slim Top Progress Bar -->
+  <div id="progressBar" class="fixed top-0 left-0 h-1 bg-primary w-0 z-50"></div>
+
+  <!-- Scroll Progress Circle -->
+  <div id="scrollProgress" class="fixed top-4 right-4 w-12 h-12 z-50">
+    <svg class="w-full h-full transform -rotate-90">
+      <circle cx="50%" cy="50%" r="48%" stroke="var(--tw-colors-primary)" stroke-width="4" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="hidden fixed bottom-8 right-8 bg-primary p-3 rounded-full shadow-lg z-50 hover:scale-110 transition-transform">
+    <i data-feather="arrow-up" class="w-5 h-5 text-secondary"></i>
+  </button>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookieConsent" class="fixed bottom-0 inset-x-0 bg-gray-900 text-gray-200 p-4 z-50 flex justify-between items-center">
+    <p>Nous utilisons des cookies pour améliorer votre expérience. <a href="#" class="text-primary underline">En savoir plus</a></p>
+    <button id="acceptCookies" class="btn btn-primary">Accepter</button>
+  </div>
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 bg-secondary flex items-center justify-center z-50">
+    <div id="preloader-lottie" style="width:120px;height:120px;"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="fixed inset-x-0 top-0 bg-secondary/90 backdrop-blur-md shadow-lg z-40 animate__animated animate__fadeInDown">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="#accueil" class="text-2xl font-bold text-primary">Auto-École Neuburger</a>
+      <nav class="hidden md:flex items-center space-x-6 font-semibold">
+        <a href="#accueil" class="hover:text-primary">Accueil</a>
+        <a href="#formules" class="hover:text-primary">Formules</a>
+        <a href="#vehicules" class="hover:text-primary">Permis</a>
+        <a href="#horaires" class="hover:text-primary">Horaires</a>
+        <a href="#contact" class="hover:text-primary">Contact</a>
+      </nav>
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <i data-feather="menu" class="text-2xl text-primary"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden bg-secondary/95 backdrop-blur-md">
+      <ul class="py-2">
+        <li><a href="#accueil" class="block px-4 py-2 hover:bg-primary hover:text-secondary">Accueil</a></li>
+        <li><a href="#formules" class="block px-4 py-2 hover:bg-primary hover:text-secondary">Formules</a></li>
+        <li><a href="#vehicules" class="block px-4 py-2 hover:bg-primary hover:text-secondary">Permis</a></li>
+        <li><a href="#horaires" class="block px-4 py-2 hover:bg-primary hover:text-secondary">Horaires</a></li>
+        <li><a href="#contact" class="block px-4 py-2 hover:bg-primary hover:text-secondary">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ScrollSpy Nav Dots -->
+  <div id="scrollspy" class="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-30">
+    <a href="#accueil" class="spy-dot"></a>
+    <a href="#formules" class="spy-dot"></a>
+    <a href="#vehicules" class="spy-dot"></a>
+    <a href="#horaires" class="spy-dot"></a>
+    <a href="#contact" class="spy-dot"></a>
+  </div>
+
+<!-- Hero Section with Vanta.js + Splitting.js -->
+<section id="accueil" class="relative h-screen overflow-visible pt-16">
+  <!-- Arrière-plan animé Vanta.js -->
+  <div id="vanta-bg" class="absolute inset-0 z-0"></div>
+  <!-- Overlay sombre -->
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-secondary/80 z-10"></div>
+  <!-- Contenu centré -->
+ <div class="container mx-auto relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
+    <h1
+      class="splitting font-serif text-7xl md:text-8xl font-bold gradient-text mb-6  
+             animate__animated animate__bounce animate__infinite"
+      data-splitting
+    >
+      Maîtrisez la route<br>avec Neuburger
+    </h1>
+    <span class="typed-sub text-2xl mb-6"></span>
+    <button
+      data-modal-target="contactModal"
+      data-modal-toggle="contactModal"
+      class="btn btn-glow btn-lg font-semibold animate__animated animate__bounce animate__infinite"
+    >
+      Évaluez-moi gratuitement
+    </button>
+  </div>
+
+  <!-- Blobs décoratifs -->
+  <div class="absolute top-10 left-10 w-32 h-32 bg-primary rounded-full opacity-30 blob"></div>
+  <div class="absolute bottom-20 right-20 w-24 h-24 bg-primary rounded-full opacity-20 blob"></div>
+</section>
+
+ <!-- Nos Permis (Voiture & Moto) -->
+  <section id="vehicules" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-12 text-white" data-aos="fade-down">Nos Permis</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="glass-card p-6 rounded-xl shadow-lg text-center" data-aos="zoom-in">
+          <!-- image voiture à insérer -->
+          <h4 class="text-2xl font-semibold mb-2">Permis Voiture</h4>
+        </div>
+        <div class="glass-card p-6 rounded-xl shadow-lg text-center" data-aos="zoom-in" data-aos-delay="100">
+          <!-- image moto à insérer -->
+          <h4 class="text-2xl font-semibold mb-2">Permis Moto</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="services-placeholder"></div>
+
+
+  <!-- Nos Formules -->
+  <section id="formules" class="py-20 bg-secondary">
+    <h2 class="font-serif text-4xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">
+      Nos Formules Permis B
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8 px-4">
+      <!-- 20h -->
+      <div class="glass-card p-6 rounded-xl shadow-lg" data-aos="fade-up">
+        <h3 class="text-2xl font-semibold mb-2">Permis B – 20 h</h3>
+        <p class="text-3xl font-bold mb-4">850 €</p>
+        <ul class="list-disc list-inside text-gray-200 mb-4">
+          <li>Constitution du dossier</li>
+          <li>Code illimité (6 mois, selon places)</li>
+          <li>Fournitures pédagogiques + livret de suivi</li>
+          <li>Présentation à l’examen de conduite</li>
+          <li><strong>20 h</strong> de pratique effective</li>
+        </ul>
+        <p class="text-sm">Paiement en 3× sans frais sur 3 mois*</p>
+      </div>
+      <!-- Boîte auto -->
+      <div class="glass-card p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-2xl font-semibold mb-2">Permis B boîte auto</h3>
+        <p class="text-3xl font-bold mb-4">750 €</p>
+        <ul class="list-disc list-inside text-gray-200 mb-4">
+          <li>Constitution du dossier</li>
+          <li>Code illimité (6 mois, selon places)</li>
+          <li>Fournitures pédagogiques + livret de suivi</li>
+          <li>Présentation à l’examen de conduite</li>
+          <li><strong>13 h</strong> de pratique effective</li>
+          <li>Évaluation de départ non incluse</li>
+        </ul>
+        <p class="text-sm">Paiement en 3× sans frais sur 3 mois*</p>
+      </div>
+      <!-- 30h -->
+      <div class="glass-card p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-2xl font-semibold mb-2">Permis B – 30 h</h3>
+        <p class="text-3xl font-bold mb-4">1 350 €</p>
+        <ul class="list-disc list-inside text-gray-200 mb-4">
+          <li>Constitution du dossier</li>
+          <li>Code illimité (6 mois, selon places)</li>
+          <li>Fournitures pédagogiques + livret de suivi</li>
+          <li>Présentation à l’examen de conduite</li>
+          <li>Évaluation de départ incluse</li>
+          <li><strong>30 h</strong> de pratique effective</li>
+        </ul>
+        <p class="text-sm">Paiement en 3× sans frais sur 3 mois*</p>
+      </div>
+    </div>
+    <p class="text-center text-gray-400 text-sm mt-6">
+      * Le(s) 3 versement(s) à l’inscription · Tarifs valables 01/01/2024–31/12/2024 · Document non contractuel
+    </p>
+  </section>
+
+ 
+
+  <!-- Horaires du Code en Salle -->
+  <section id="horaires" class="py-20 bg-secondary">
+    <div class="container mx-auto px-4 overflow-x-auto" data-simplebar>
+      <h2 class="text-4xl font-bold text-center mb-8" data-aos="fade-up">Horaires du Code en Salle</h2>
+      <table class="table-auto w-full text-left bg-gray-800 rounded-lg shadow-lg">
+        <thead class="bg-gray-700 text-white">
+          <tr>
+            <th class="px-4 py-2">Jour</th>
+            <th class="px-4 py-2">Matin</th>
+            <th class="px-4 py-2">Après-midi</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-200">
+          <tr><td class="border px-4 py-2">Lundi</td>    <td class="border px-4 py-2">Fermé</td>   <td class="border px-4 py-2">Fermé</td></tr>
+          <tr><td class="border px-4 py-2">Mardi</td>    <td class="border px-4 py-2">—</td>      <td class="border px-4 py-2">15 h–19 h</td></tr>
+          <tr><td class="border px-4 py-2">Mercredi</td><td class="border px-4 py-2">—</td>      <td class="border px-4 py-2">15 h–19 h</td></tr>
+          <tr><td class="border px-4 py-2">Jeudi</td>    <td class="border px-4 py-2">—</td>      <td class="border px-4 py-2">15 h–19 h</td></tr>
+          <tr><td class="border px-4 py-2">Vendredi</td><td class="border px-4 py-2">—</td>      <td class="border px-4 py-2">15 h–19 h</td></tr>
+          <tr><td class="border px-4 py-2">Samedi</td>   <td class="border px-4 py-2">10 h–12 h</td><td class="border px-4 py-2">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <!-- Avis Vroom Vroom (chargés via JS depuis vroomReviews.html) -->
+  <div id="vroom-avis-placeholder"></div>
+
+  <!-- Contact & Plan -->
+  <section id="contact" class="py-20 bg-gray-900">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8">
+      <div data-aos="fade-right">
+        <h2 class="text-4xl font-bold mb-4 text-white">Contact & Plan</h2>
+        <p class="text-gray-200 mb-2"><strong>Adresse :</strong> 5 place Nicole Neuburger, 93140 Bondy</p>
+        <p class="text-gray-200 mb-2"><strong>Téléphone :</strong> 01 41 64 97 39</p>
+        <p class="text-gray-200 mb-4"><strong>Email :</strong> <a href="mailto:autoecoleneuburger@gmail.com" class="text-primary underline">autoecoleneuburger@gmail.com</a></p>
+        <iframe
+          src="https://maps.google.com/maps?q=5%20place%20Nicole%20Neuburger%2093140%20Bondy&z=15&output=embed"
+          width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+      <div data-aos="fade-left">
+        <h2 class="text-4xl font-bold mb-4 text-white">Envoyez-nous un message</h2>
+        <form id="contactForm" class="space-y-4">
+          <input type="text" placeholder="Votre nom" class="input input-bordered w-full bg-gray-800 text-white" required>
+          <input type="email" placeholder="Votre email" class="input input-bordered w-full bg-gray-800 text-white" required>
+          <textarea placeholder="Votre message" rows="4" class="textarea textarea-bordered w-full bg-gray-800 text-white" required></textarea>
+          <button type="submit" class="btn btn-primary w-full">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer with Newsletter -->
+  <footer class="bg-secondary/80 py-8 text-center text-gray-400">
+    © 2025 Auto-École Neuburger – Tous droits réservés.
+    <div class="mt-4">
+      <form id="newsletterForm" class="flex justify-center items-center space-x-2">
+        <input type="email" placeholder="Votre email" required class="input input-bordered w-64 bg-gray-800 text-white" />
+        <button type="submit" class="btn btn-primary">S'abonner</button>
+      </form>
+      <p id="newsletterMsg" class="text-center text-sm text-gray-400 mt-2">Merci ! Vous êtes abonné.</p>
+    </div>
+  </footer>
+
+  <!-- External JS Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.8.1/nouislider.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/splitting@1.1.0/dist/splitting.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.3.0/simplebar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/microtip@0.2.2/dist/microtip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+
+  <!-- Splitting.js & Vanta.js init -->
+  <script>
+    Splitting();
+    VANTA.NET({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0xfbbf24,
+      backgroundColor: 0x111827
+    });
+  </script>
+
+  <!-- Your main JS -->
+  <script src="script.js"></script>
+    <!-- Vroom Vroom Reviews JS (charge et initialise le carrousel) -->
+  <script src="vroomReviews.js"></script>
+  <script src="services.js"></script>
+
+
+</body>
+</html>

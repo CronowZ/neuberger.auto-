@@ -1,0 +1,54 @@
+/* services.css */
+
+/* Section Services */
+#services {
+  background-color: #1F2937; /* bg-gray-800 */
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Titre en dégradé (même style que reviews) */
+#services .gradient-text {
+  background: linear-gradient(90deg, #FBBF24, #FFFFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grille responsive */
+#services .grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 640px) {
+  #services .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  #services .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Cartes de service */
+.service-card {
+  background-color: #111827; /* bg-secondary */
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card i {
+  display: block;
+}
+.service-card h3 {
+  margin-top: 0.5rem;
+  color: #E5E7EB; /* text-gray-200 */
+}
+
+/* Effet hover identique aux tarifs */
+.service-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+}

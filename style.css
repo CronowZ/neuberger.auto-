@@ -1,0 +1,284 @@
+/* style.css */
+
+/* ─ Variables & global resets ───────────────────────────────────────────────── */
+:root {
+  --primary: #FBBF24;
+  --secondary: #111827;
+}
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─ Slim Top Progress Bar ──────────────────────────────────────────────────── */
+#progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: var(--primary);
+  width: 0;
+  transition: width .2s ease;
+  z-index: 50;
+}
+
+/* ─ Scroll Progress Circle ────────────────────────────────────────────────── */
+#scrollProgress {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  z-index: 50;
+}
+#scrollProgress svg {
+  width: 100%;
+  height: 100%;
+}
+#scrollProgress circle {
+  stroke-dasharray: 302;
+  stroke-dashoffset: 302;
+  transition: stroke-dashoffset .2s ease;
+}
+
+/* ─ Back to Top Button ─────────────────────────────────────────────────────── */
+#backToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--primary);
+  padding: .75rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease;
+}
+#backToTop:hover {
+  transform: scale(1.1);
+}
+
+/* ─ Custom Cursor ─────────────────────────────────────────────────────────── */
+.cursor, .cursor-follower {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 9999px;
+  z-index: 9999;
+}
+.cursor {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary);
+}
+.cursor-follower {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(251,191,36,0.3);
+  mix-blend-mode: difference;
+}
+
+/* ─ Cookie Consent Banner ────────────────────────────────────────────────── */
+/* Cookie Consent Banner */
+#cookieConsent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #111827;
+  color: #e5e7eb;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+
+  /* → on ajoute : */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* État “en train de disparaître” */
+#cookieConsent.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ─ Preloader ─────────────────────────────────────────────────────────────── */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background-color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* ─ Navbar & Mobile Menu ─────────────────────────────────────────────────── */
+header {
+  transition: backdrop-filter .3s ease, background-color .3s ease;
+}
+#mobile-menu {
+  transition: max-height .3s ease;
+  overflow: hidden;
+}
+
+/* ─ ScrollSpy Nav Dots ───────────────────────────────────────────────────── */
+.spy-dot {
+  width: .75rem;
+  height: .75rem;
+  background-color: #374151;
+  border-radius: 9999px;
+  transition: background-color .2s ease;
+}
+.spy-dot:hover, .spy-dot.active {
+  background-color: var(--primary);
+}
+
+/* ─ Splitting.js Helper ───────────────────────────────────────────────────── */
+[data-splitting] .word {
+  display: inline-block;
+}
+
+/* ─ SimpleBar Custom Scrollbar ───────────────────────────────────────────── */
+.simplebar-scrollbar:before {
+  background-color: var(--primary);
+}
+
+/* ─ Gradient‐Animated Titles ───────────────────────────────────────────────── */
+.gradient-text,
+.gradient-text * {
+  background: linear-gradient(90deg, var(--primary), #fcd34d, var(--primary));
+  background-size: 200% 200%;
+  /* WebKit */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Mozilla */
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  /* Standard */
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
+}
+
+/* ─ Floating Blobs ────────────────────────────────────────────────────────── */
+.blob {
+  animation: floatBlob 6s ease-in-out infinite;
+}
+@keyframes floatBlob {
+  0%,100% { transform: translateY(0)     scale(1); }
+   50%    { transform: translateY(-20px) scale(1.1); }
+}
+
+/* ─ Pricing Card ──────────────────────────────────────────────────────────── */
+#pricing .card-pricing {
+  background-color: #ffffff;
+  color: #1f2937;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.dark #pricing .card-pricing {
+  background-color: #374151;
+  color: #e5e7eb;
+}
+
+/* ─ Header Animate on Scroll ───────────────────────────────────────────────── */
+.header-scrolled {
+  backdrop-filter: blur(10px);
+  background-color: rgba(17,24,39,0.8);
+}
+
+/* ─ Typed.js Subtext ───────────────────────────────────────────────────────── */
+.typed-sub {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: #f3f4f6;
+}
+
+/* ─ Counters ──────────────────────────────────────────────────────────────── */
+.counter {
+  font-size: 2rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* ─ Section Overlay ───────────────────────────────────────────────────────── */
+section:not(.no-overlay)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(17,24,39,0.4);
+  pointer-events: none;
+  z-index: 0;
+}
+section > * {
+  position: relative;
+  z-index: 10;
+}
+
+/* ─ Splitting.js Word Helper ───────────────────────────────────────────────── */
+[data-splitting] .word {
+  display: inline-block;
+}
+
+/* ─ SimpleBar Custom Scrollbar ───────────────────────────────────────────── */
+.simplebar-scrollbar:before {
+  background-color: var(--primary);
+}
+
+/* ─ Pricing Card List ─────────────────────────────────────────────────────── */
+.card-pricing ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card-pricing li {
+  display: flex;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+.card-pricing li::before {
+  content: '•';
+  margin-right: .5rem;
+  color: var(--primary);
+}
+
+/* ─ Responsive Utilities ──────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\:text-7xl { font-size: 4.5rem; }
+}
+
+/* ─ Newsletter Form ───────────────────────────────────────────────────────── */
+#newsletterForm {
+  margin-top: 1rem;
+}
+#newsletterMsg {
+  display: none;
+  margin-top: .5rem;
+  font-size: .875rem;
+  color: #d1d5db;
+}
+#newsletterMsg.show {
+  display: block;
+}
+
+/* ─ FAQ Collapse Titles ───────────────────────────────────────────────────── */
+.collapse-title {
+  font-weight: 600;
+}
+.collapse-content {
+  padding: 1rem;
+}

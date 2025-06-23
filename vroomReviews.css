@@ -1,0 +1,107 @@
+/* vroomReviews.css */
+
+/* Section Avis */
+#avis-vroom-vroom {
+  background-color: var(--tw-colors-secondary);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Titre en dégradé */
+#avis-vroom-vroom .gradient-text {
+  background: linear-gradient(90deg, #FBBF24, #FFFFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Espace sous le carrousel */
+#avis-vroom-vroom .swiper-container {
+  padding-bottom: 2rem;
+}
+
+/* Largeur automatique des slides */
+#avis-vroom-vroom .swiper-slide {
+  width: auto;
+}
+
+/* Style des cartes d’avis */
+#avis-vroom-vroom .swiper-slide .p-6 {
+  background-color: #1F2937;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Texte des avis */
+#avis-vroom-vroom .swiper-slide p {
+  color: #E5E7EB;
+  line-height: 1.6;
+}
+
+/* Étoiles de notation */
+#avis-vroom-vroom .swiper-slide .text-yellow-400 {
+  font-size: 1.25rem;
+  margin-right: 0.25rem;
+}
+
+/* Auteur et date */
+#avis-vroom-vroom .swiper-slide .text-gray-400 {
+  color: #9CA3AF;
+  font-size: 0.875rem;
+}
+
+/* Flèches de navigation */
+#avis-vroom-vroom .swiper-button-prev,
+#avis-vroom-vroom .swiper-button-next {
+  color: var(--tw-colors-primary);
+}
+
+/* Bullets de pagination */
+#avis-vroom-vroom .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+}
+#avis-vroom-vroom .swiper-pagination-bullet-active {
+  background: var(--tw-colors-primary);
+}
+
+/* Effet hover & tilt (comme sur les tarifs) */
+#avis-vroom-vroom .swiper-slide.glass-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#avis-vroom-vroom .swiper-slide.glass-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Cercle de progression */
+#avis-vroom-vroom .slide-progress {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 10;
+}
+#avis-vroom-vroom .slide-progress svg {
+  width: 100%;
+  height: 100%;
+}
+#avis-vroom-vroom .slide-progress .progress-bg {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+#avis-vroom-vroom .slide-progress .progress-fg {
+  stroke: #FBBF24;
+  stroke-linecap: round;
+  stroke-dasharray: 113.097; /* 2·π·18 */
+  stroke-dashoffset: 113.097;
+}
+
+/* Animation de remplissage du cercle (20s) */
+@keyframes circleProgress {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
